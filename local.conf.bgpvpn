@@ -1,0 +1,28 @@
+[[local|localrc]]
+ADMIN_PASSWORD=nodnol1321
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+HOST_IP=10.0.2.15
+RECLONE=yes
+disable_service n-net
+enable_service q-svc
+enable_service q-agt
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+enable_service q-metering
+enable_service neutron
+enable_service q-lbaas
+enable_service q-fwaas
+enable_service q-vpn
+disable_service sahara
+disable_service trove tr-api tr-tmgr tr-cond
+disable_service ceilometer-acompute ceilometer-acentral ceilometer-anotification ceilometer-collector ceilometer-api
+
+enable_plugin neutron https://git.openstack.org/openstack/neutron.git
+enable_plugin networking-bgpvpn https://git.openstack.org/openstack/networking-bgpvpn.git
+NETWORKING_BGPVPN_DRIVER="BGPVPN:BaGPipe:networking_bgpvpn.neutron.services.service_drivers.bagpipe.bagpipe.BaGPipeBGPVPNDriver:default"
+enable_plugin networking-bagpipe https://git.openstack.org/openstack/networking-bagpipe.git
+BAGPIPE_DATAPLANE_DRIVER_IPVPN=mpls_ovs_dataplane.MPLSOVSDataplaneDriver
+
